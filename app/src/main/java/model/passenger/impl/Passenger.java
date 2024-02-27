@@ -8,7 +8,7 @@ import model.passenger.PassengerInterface;
 
 @Data
 @AllArgsConstructor
-public abstract class AbstractPassenger implements PassengerInterface {
+public abstract class Passenger implements PassengerInterface {
 
     protected String name; 
     protected Long passengerNumber;

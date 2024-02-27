@@ -6,7 +6,7 @@ import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class StandardPassenger extends AbstractPassenger {
+public class StandardPassenger extends Passenger {
 
     public StandardPassenger(String name, Long passengerNumber, Double balance,
             Map<Activity, Double> registeredActivities) {

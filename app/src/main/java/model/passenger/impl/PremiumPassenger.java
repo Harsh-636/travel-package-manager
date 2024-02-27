@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import model.Activity;
 
 @Slf4j
-public class PremiumPassenger extends AbstractPassenger {
+public class PremiumPassenger extends Passenger {
 
     public PremiumPassenger(String name, Long passengerNumber, Double balance,
             Map<Activity, Double> registeredActivities) {
