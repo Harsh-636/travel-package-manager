@@ -10,7 +10,7 @@ import model.passenger.PassengerInterface;
 @AllArgsConstructor
 public abstract class Passenger implements PassengerInterface {
 
-    protected String name; 
+    protected String name;
     protected Long passengerNumber;
     protected Double balance;
     protected Map<Activity, Double> registeredActivities;
@@ -20,5 +20,4 @@ public abstract class Passenger implements PassengerInterface {
 
     @Override
     public abstract void registerForActivity(Activity activity);
-    
 }

@@ -23,6 +23,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
     implementation 'org.slf4j:slf4j-reload4j:2.1.0-alpha1'
+    implementation 'org.apache.commons:commons-collections4:4.4'
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'

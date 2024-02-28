@@ -41,5 +41,4 @@ public class StandardPassenger extends Passenger {
         this.setBalance(this.balance - activity.getCost());
     }
 
-
 }
