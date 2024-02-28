@@ -1,20 +1,30 @@
 package model.passenger.impl;
 
 import java.util.Map;
+import java.util.HashMap;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import model.Activity;
 
 @Slf4j
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class PremiumPassenger extends Passenger {
 
-    public PremiumPassenger(String name, Long passengerNumber, Double balance,
-            Map<Activity, Double> registeredActivities) {
-        super(name, passengerNumber, balance, registeredActivities);
+    private String name;
+    private Integer passengerNumber;
+    private Map<Activity, Double> registeredActivities = new HashMap<>();
+
+    public PremiumPassenger(String name, Integer passengerNumber) {
+        this.name = name;
+        this.passengerNumber = passengerNumber;
     }
 
     @Override
     public void setBalance(Double value) {
-        this.balance = value;
+        System.out.println("Premium Passengers do not have a balance!");
+        return;
     }
 
     @Override

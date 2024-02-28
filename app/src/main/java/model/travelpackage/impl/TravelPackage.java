@@ -1,6 +1,8 @@
 package model.travelpackage.impl;
 
 import java.util.List;
+import org.apache.commons.collections4.CollectionUtils;
+import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -82,17 +84,16 @@ public class TravelPackage implements TravelPackageInterface {
         log.info("Printing details for available activities for travel package {}", this.name);
 
         itinerary.forEach(destination -> {
-            if (destination.getActivities() == null || destination.getActivities().isEmpty()) {
+            if (CollectionUtils.isEmpty(destination.getActivities())) {
                 return;
             }
-
-            destination.getActivities().stream()
-                    .filter(activity -> activity.getCapacity() > 0)                                     // filtering out activities with available capacity
+            System.out.println("Destination : " + destination.getName());
+            destination.getActivities().stream().filter(activity -> activity.getCapacity() > 0)
                     .forEach(activity -> {
                         System.out.println("\tActivity Name : " + activity.getName());
                         System.out.println("\tActivity Description : " + activity.getDescription());
                         System.out.println("\tActivity Cost : " + activity.getCost());
-                        System.out.println("\tAvailable Capacity : " + activity.getCost());
+                        System.out.println("\tAvailable Capacity : " + activity.getCapacity());
                     });
 
         });
@@ -100,11 +101,17 @@ public class TravelPackage implements TravelPackageInterface {
 
     @Override
     public void addDestination(Destination destination) {
+        if (this.itinerary == null) {
+            this.itinerary = new ArrayList<>();
+        }
         this.itinerary.add(destination);
     }
 
     @Override
     public void addPassenger(Passenger passenger) {
+        if (this.passengers == null) {
+            this.passengers = new ArrayList<>();
+        }
         this.passengers.add(passenger);
     }
 

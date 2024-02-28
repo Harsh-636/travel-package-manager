@@ -1,15 +1,26 @@
 package model.passenger.impl;
 
 import java.util.Map;
+import java.util.HashMap;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import model.Activity;
 
 @Slf4j
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class GoldPassenger extends Passenger {
 
-    public GoldPassenger(String name, Long passengerNumber, Double balance,
-            Map<Activity, Double> registeredActivities) {
-        super(name, passengerNumber, balance, registeredActivities);
+    private String name;
+    private Integer passengerNumber;
+    private Double balance;
+    private Map<Activity, Double> registeredActivities = new HashMap<>();
+
+    public GoldPassenger(String name, Integer passengerNumber, Double balance) {
+        this.name = name;
+        this.passengerNumber = passengerNumber;
+        this.balance = balance;
     }
 
     @Override
