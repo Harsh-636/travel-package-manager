@@ -1,16 +1,26 @@
 package model.passenger.impl;
 
-import model.Activity;
 import java.util.Map;
-
+import java.util.HashMap;
+import model.Activity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class StandardPassenger extends Passenger {
 
-    public StandardPassenger(String name, Long passengerNumber, Double balance,
-            Map<Activity, Double> registeredActivities) {
-        super(name, passengerNumber, balance, registeredActivities);
+    private String name;
+    private Integer passengerNumber;
+    private Double balance;
+    private Map<Activity, Double> registeredActivities = new HashMap<>();
+
+    public StandardPassenger(String name, Integer passengerNumber, Double balance) {
+        this.name = name;
+        this.passengerNumber = passengerNumber;
+        this.balance = balance;
     }
 
     @Override
@@ -33,13 +43,14 @@ public class StandardPassenger extends Passenger {
             return;
         }
 
-        activity.setCapacity(activity.getCapacity() - 1);
         // add to registered activities
         registeredActivities.put(activity, activity.getCost());
 
+        // keeping these at the end to ensure atomicity of registering operation
+        // reducing capacity
+        activity.setCapacity(activity.getCapacity() - 1);
         // subtract cost from passenger's balance
         this.setBalance(this.balance - activity.getCost());
     }
-
 
 }
