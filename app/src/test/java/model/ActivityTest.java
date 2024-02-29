@@ -9,7 +9,6 @@ public class ActivityTest {
     public void testConstructorAndGetters() {
         Activity activity = new Activity("Slides", "Slides for children", 50.0, 10);
 
-        // Test constructor and getters
         assertEquals("Slides", activity.getName());
         assertEquals("Slides for children", activity.getDescription());
         assertEquals(50.0, activity.getCost(), 0.01);
